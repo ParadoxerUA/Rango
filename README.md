@@ -1,0 +1,2 @@
+# Rango
+django practice course
