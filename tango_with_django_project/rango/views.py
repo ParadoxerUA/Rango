@@ -8,6 +8,6 @@ def index(request):
 
 
 def about(request):
-    return HttpResponse('<p>about rango...</p>'
-                        '<a href="/rango/">Back</a>')
+    context_dict = {'message_about': "This tutorial has been put together by Paradoxer"}
+    return render(request, 'rango/about.html', context=context_dict)
 
