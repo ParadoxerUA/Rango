@@ -6,8 +6,9 @@ class PageAdmin(admin.ModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('name',)}
     fieldsets = [
-        (None, {'fields': ['name']}),
+        (None, {'fields': ['name', 'slug']}),
         ('Popularity', {'fields': ['views', 'likes']})
     ]
 
