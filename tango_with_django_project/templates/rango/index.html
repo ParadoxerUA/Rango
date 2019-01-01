@@ -10,6 +10,7 @@
 	<div>hey there partner!</div>
 	<div>
 		{% if categories %}
+		<h2>Most Liked Categories</h2>
 		<ul>
 			{% for category in categories %}
 				<li>
@@ -19,6 +20,16 @@
 		</ul>
 		{% else %}
 		<strong>There are no categories present</strong>
+		{% endif %}
+		{% if pages %}
+			<h2>Most Viewed Pages</h2>
+			<ul>
+				{% for page in pages %}
+				<li><a href="{{ page.url }}">{{ page.title }}</a>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<strong>There is no pages yet</strong>
 		{% endif %}
 	</div>
 	<div>

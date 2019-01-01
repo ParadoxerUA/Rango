@@ -5,6 +5,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 import django
 django.setup()
 from rango.models import Category, Page
+from random import randint
 
 def populate():
     python_pages = [
@@ -36,21 +37,26 @@ def populate():
             "Django": {"pages": django_pages, "views": 64, "likes": 32},
             "Other Frameworks": {"pages": other_pages, "views": -1} }
 
+    for dt1, dt2, dt3 in python_pages, django_pages, other_pages:
+        dt1['views'] = randint(1, 101)
+        dt2['views'] = randint(1, 101)
+        dt3['views'] = randint(1, 101)
+
 
     for cat, cat_data in cats.items():
         c = add_cat(cat, **cat_data)
         for p in cat_data["pages"]:
-            add_page(c, p["title"], p["url"])
+            add_page(c, **p)
 
     for c in Category.objects.all():
         for p in Page.objects.filter(category=c):
             print("- {0} - {1}".format(str(c), str(p)))
 
 
-def add_page(cat, title, url, views=0):
-    p = Page.objects.get_or_create(category=cat, title=title)[0]
-    p.url = url
-    p.views = views
+def add_page(cat, **kwargs):
+    p = Page.objects.get_or_create(category=cat, title=kwargs.get(title))[0]
+    p.url = kwargs.get(url)
+    p.views = kwargs.get(views, 0)
     p.save()
     return p
 
