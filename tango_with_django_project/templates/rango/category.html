@@ -1,0 +1,27 @@
+<!DOCTYOE html>
+<html>
+<head>
+    <title>Rango</title>
+</head>
+
+<body>
+    <strong>Pages:</strong>
+    <div>
+        {% if category %}
+            <h1>{{ category.name }}</h1>
+            {% if pages %}
+                <ul>
+                    {% for page in pages %}
+                        <li><a href="{{page.url}}">{{page.title}}</a></li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <strong>This category is empty</strong>
+            {% endif %}
+        {% else %}
+            This category doesnt exists!
+        {% endif %}
+
+    </div>
+</body>
+</html>
