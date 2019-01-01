@@ -2,7 +2,7 @@ from django.contrib import admin
 from rango.models import Category, Page
 
 class PageAdmin(admin.ModelAdmin):
-    list_display = ['title', 'category', 'url']
+    list_display = ['title', 'category', 'url', 'views']
 
 
 class CategoryAdmin(admin.ModelAdmin):

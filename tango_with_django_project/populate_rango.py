@@ -37,10 +37,9 @@ def populate():
             "Django": {"pages": django_pages, "views": 64, "likes": 32},
             "Other Frameworks": {"pages": other_pages, "views": -1} }
 
-    for dt1, dt2, dt3 in python_pages, django_pages, other_pages:
-        dt1['views'] = randint(1, 101)
-        dt2['views'] = randint(1, 101)
-        dt3['views'] = randint(1, 101)
+    for lst in (python_pages, django_pages, other_pages):
+        for dict in lst:
+            dict['views'] = randint(0, 101)
 
 
     for cat, cat_data in cats.items():
@@ -54,9 +53,9 @@ def populate():
 
 
 def add_page(cat, **kwargs):
-    p = Page.objects.get_or_create(category=cat, title=kwargs.get(title))[0]
-    p.url = kwargs.get(url)
-    p.views = kwargs.get(views, 0)
+    p = Page.objects.get_or_create(category=cat, title=kwargs.get("title"))[0]
+    p.url = kwargs.get("url")
+    p.views = kwargs.get("views", 0)
     p.save()
     return p
 
