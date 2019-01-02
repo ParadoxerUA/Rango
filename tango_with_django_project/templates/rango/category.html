@@ -18,9 +18,11 @@
             {% else %}
                 <strong>This category is empty</strong>
             {% endif %}
+            <a href="/rango/category/{{category.slug}}/add_page/">Add page to this category</a>
         {% else %}
             This category doesnt exists!
         {% endif %}
+        <br>
         <a href="/">Home</a>
     </div>
 </body>
