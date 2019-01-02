@@ -5,11 +5,11 @@
 </head>
 
 <body>
-    <strong>Pages:</strong>
     <div>
         {% if category %}
             <h1>{{ category.name }}</h1>
             {% if pages %}
+                <strong>Pages:</strong>
                 <ul>
                     {% for page in pages %}
                         <li><a href="{{page.url}}">{{page.title}}</a></li>
