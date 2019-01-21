@@ -18,7 +18,7 @@
             {% else %}
                 <strong>This category is empty</strong>
             {% endif %}
-            <a href="/rango/category/{{category.slug}}/add_page/">Add page to this category</a>
+            <a href="{% url 'add_page' category.slug %}">Add page to this category</a>
         {% else %}
             This category doesnt exists!
         {% endif %}
