@@ -1,29 +1,25 @@
-<!DOCTYOE html>
-<html>
-<head>
-    <title>Rango</title>
-</head>
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
 
-<body>
-    <div>
-        {% if category %}
-            <h1>{{ category.name }}</h1>
-            {% if pages %}
-                <strong>Pages:</strong>
-                <ul>
-                    {% for page in pages %}
-                        <li><a href="{{page.url}}">{{page.title}}</a></li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <strong>This category is empty</strong>
-            {% endif %}
-            <a href="{% url 'rango:add_page' category.slug %}">Add page to this category</a>
+{% block title_block %}
+	{{ category.name }}
+{% endblock %}
+
+{% block body_block %}
+    {% if category %}
+        <h1>{{ category.name }}</h1>
+        {% if pages %}
+            <strong>Pages:</strong>
+            <ul>
+                {% for page in pages %}
+                    <li><a href="{{page.url}}">{{page.title}}</a></li>
+                {% endfor %}
+            </ul>
         {% else %}
-            This category doesnt exists!
+            <strong>This category is empty</strong>
         {% endif %}
-        <br>
-        <a href="/">Home</a>
-    </div>
-</body>
-</html>
+        <a href="{% url 'rango:add_page' category.slug %}">Add page to this category</a>
+    {% else %}
+        This category doesnt exists!
+    {% endif %}
+{% endblock %}
