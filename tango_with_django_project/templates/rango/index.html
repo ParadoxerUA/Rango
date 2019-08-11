@@ -1,44 +1,44 @@
 {% extends 'rango/base.html' %}
 {% load staticfiles %}
 
+{% block title_block %}
+	Index
+{% endblock %}
+
 {% block body_block %}
-	<div>
-		{% if categories %}
-		<h2>Most Liked Categories</h2>
-		<ul>
-			{% for category in categories %}
-				<li>
-					<a href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a>
-				</li>
-			{% endfor %}
-		</ul>
+	<div class="container">
+		<div class="col-sm-6">
+			{% if categories %}
+			<div class="list-group">
+				<h2 div class="list-group">Most Liked Categories</h2>
+				
+				
+					{% for category in categories %}
+						
+							<a class="list-group-item" href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a>
+					
+					{% endfor %}
+				</div>
+			</div>
 		{% else %}
-		<strong>There are no categories present</strong>
+			<strong>There are no categories present</strong>
 		{% endif %}
+		<div class="col-sm-6">
 		{% if pages %}
-			<h2>Most Viewed Pages</h2>
-			<ul>
-				{% for page in pages %}
-				<li><a href="{{ page.url }}">{{ page.title }}</a>
-				{% endfor %}
-			</ul>
+				<div class="list-group">
+				<h2 class="list-group-item-heading">Most Viewed Pages</h2>
+				
+					{% for page in pages %}
+					<a class="list-group-item" href="{{ page.url }}">{{ page.title }}</a>
+					{% endfor %}
+				</div>
 		{% else %}
 			<strong>There is no pages yet</strong>
 		{% endif %}
+		</div>
 
-		<img src="{% static "images/guitar.jpeg"%}"
+		<img src='{% static "images/guitar.jpeg"%}'
 			 alt="electro guitar"/>
 	</div>
 {% endblock %}
 
-{% block link_block %}
-	{% if user.is_authenticated %}
-		<li><a href="{% url 'rango:logout' %}">Logout</a></li>
-	{% else %}
-		<li><a href="{% url 'rango:login' %}">Login</a></li>
-		<li><a href="{% url 'rango:register' %}">Register</a></li>
-	{% endif %}
-		<li><a href="{% url 'rango:add_category' %}">Add a New Category</a></li>
-		<li><a href="{% url 'rango:about' %}">About</a></li>
-		<li><a href="{% url 'rango:index' %}">Index</a></li>
-{% endblock %}
