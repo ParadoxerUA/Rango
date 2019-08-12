@@ -8,6 +8,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">  -->
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 		<style>
 			a.top {
@@ -21,28 +23,30 @@
 		</style>
 		<title>
 			{% block title_block %}
-				How to Tango with Django!
+				How to Tango swith Django!
 			{% endblock %}
 		</title>
 
 	</head>
-	<body>
+	<body style="padding-top: 65px">
 		{% block link_block %}
 		<nav class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container" >
+			<div class="container">
 		   	
 		   		<ul class="navbar-header">
-		   		<li class="active"><a class="navbar-brand" onclick="tougleLinks()" href="{% url 'rango:index' %}">Home</a></li>
+		   			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myMenu"><span class="caret"></span></button>
+		   			<li class="active"><a class="navbar-brand" onclick="tougleLinks()" href="{% url 'rango:index' %}">Home</a></li>
 		   		</ul>
-		   	
-		   	<ul class="nav navbar-nav">
-		   		<li><a onclick="tougleLinks()" href="{% url 'rango:add_category' %}">Add New Category</a></li>
-		   		<li><a onclick="tougleLinks()" href="{% url 'rango:about' %}">About</a></li>
-		   	</ul>
-		   	<ul class="nav navbar-nav navbar-right">
-		   		<li><a onclick="tougleLinks()" href="{% url 'rango:register' %}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
-		   		<li><a onclick="tougleLinks()" href="{% url 'rango:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-		   	</ul>
+		   	<div class="collapse navbar-collapse" id="myMenu">
+			   	<ul class="nav navbar-nav" id="myMenu">
+			   		<li><a onclick="tougleLinks()" href="{% url 'rango:add_category' %}">Add New Category</a></li>
+			   		<li><a onclick="tougleLinks()" href="{% url 'rango:about' %}">About</a></li>
+			   	</ul>
+			   	<ul class="nav navbar-nav navbar-right">
+			   		<li><a onclick="tougleLinks()" href="{% url 'rango:register' %}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+			   		<li><a onclick="tougleLinks()" href="{% url 'rango:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			   	</ul>
+		   </div>
 
 				
 
