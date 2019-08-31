@@ -1,0 +1,28 @@
+
+#sideBar {
+
+  width: 200px;
+  height: 100%;
+  background-color: #0f0f0f;
+  display: block;
+  position: absolute;
+  left: -200px;
+  transition: 0.2s linear;
+}
+
+#sideBar.visible{
+  left: 0px;
+  transition: 0.2s linear;
+}
+
+.sidebarItem {
+  background-color: #222222;
+  padding: 2px;
+}
+
+#greetBlock {
+  padding-top: 15px;
+  padding-bottom: 20px;
+  font-size: 25px;
+  font-family: Helvetica, Arial, sans-serif;
+}

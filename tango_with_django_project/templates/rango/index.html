@@ -1,22 +1,37 @@
 {% extends 'rango/base.html' %}
 {% load staticfiles %}
+{% load rango_template_tags %}
 
 {% block title_block %}
 	Index
 {% endblock %}
 
 {% block body_block %}
+  <div class="container" id="greetBlock">
+     {% if user.is_authenticated %}
+        howdy {{ user.username }}!
+		{% else %}
+			hey there, partner!
+		{% endif %}
+        </div>
+{#    <button id="sidebar-btn">Cats</button>#}
+{#    <div id="sideBar">#}
+{#      <a href="#">Link 1</a>#}
+{#      <a href="#">Link 2</a>#}
+{#    </div>#}
 	<div class="container">
+
+
 		<div class="col-sm-6">
 			{% if categories %}
 			<div class="list-group">
-				<h2 div class="list-group">Most Liked Categories</h2>
+				<h2 class="list-group-item-heading">Most Liked Categories</h2>
 				
 				
 					{% for category in categories %}
 						
 							<a class="list-group-item" href="{% url 'rango:show_category' category.slug %}">{{ category.name }}</a>
-					
+
 					{% endfor %}
 				</div>
 			</div>
@@ -37,8 +52,22 @@
 		{% endif %}
 		</div>
 
-		<img src='{% static "images/guitar.jpeg"%}'
-			 alt="electro guitar"/>
+
 	</div>
+  <img src='{% static "images/guitar.jpeg"%}'
+			 alt="electro guitar"/>
+  <div>
+  <hr />
+      {% get_category_list %}
+
+  </div>
+  <script>
+    $(document).ready(function(){
+        $('#sidebar-btn').click(function () {
+            $('#sideBar').toggleClass('visible');
+
+        })
+    });
+  </script>
 {% endblock %}
 

@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 {% load staticfiles %}
-{% load rango_template_tags %}
+
 
 <html lang="eu">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">  -->
+        <link rel="stylesheet" href="../../static/css/MyStyle.css" type="text/css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 		<style>
 			a.top {
@@ -38,7 +40,7 @@
 		   			<li class="active"><a class="navbar-brand" onclick="tougleLinks()" href="{% url 'rango:index' %}">Home</a></li>
 		   		</ul>
 		   	<div class="collapse navbar-collapse" id="myMenu">
-			   	<ul class="nav navbar-nav" id="myMenu">
+			   	<ul class="nav navbar-nav" id="myMenu" >
 			   		<li><a onclick="tougleLinks()" href="{% url 'rango:add_category' %}">Add New Category</a></li>
 			   		<li><a onclick="tougleLinks()" href="{% url 'rango:about' %}">About</a></li>
 			   	</ul>
@@ -55,20 +57,12 @@
 		</nav>
 		{% endblock %}
 		<div class="container">
-		{% if user.is_authenticated %}
-			howdy {{ user.username }}!
-		{% else %}
-			hey there, partner!
-		{% endif %}
+
 		<div>
 			{% block body_block %}
 			{% endblock %}
 		</div>
-		<div>
-			{% block sidebar_block %}
-				{% get_category_list %}
-			{% endblock %}
-		</div>
+
 	</div>
 		<hr />
 

@@ -1,3 +1,4 @@
+'''This file is created to fill up database for debugging, delete before deploy'''
 import os
 os.environ.setdefault('DJANGO_SETTINGS_MODULE',
                       'tango_with_django_project.settings')
